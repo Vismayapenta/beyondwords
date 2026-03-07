@@ -1,0 +1,18 @@
+.speed-control{
+margin-top:6px;
+margin-bottom:10px;
+}
+
+.speed-control label{
+font-size:12px;
+color:#555;
+}
+
+select{
+width:100%;
+padding:8px;
+margin-top:4px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:13px;
+}

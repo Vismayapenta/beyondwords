@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>NeuroFlow Reader</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:15px;
+    width:250px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg,#5f2c82,#49a09d);
+}
+
+.container{
+    background:white;
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+}
+
+h3{
+    text-align:center;
+    margin:0 0 15px 0;
+    font-size:20px;
+    color:#2c3e50;
+    font-weight:600;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    margin:7px 0;
+    border:none;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.25s ease;
+}
+
+/* Button Colors */
+
+#bionic{
+    background:#27ae60;
+    color:white;
+}
+
+#focus{
+    background:#f39c12;
+    color:white;
+}
+
+#read{
+    background:#2980b9;
+    color:white;
+}
+
+#stop{
+    background:#e74c3c;
+    color:white;
+}
+
+#summary{
+    background:#8e44ad;
+    color:white;
+}
+
+/* Hover Effect */
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    opacity:0.9;
+}
+
+.footer{
+    text-align:center;
+    font-size:11px;
+    color:#7f8c8d;
+    margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h3>NeuroFlow</h3>
+
+<button id="bionic">Bionic Reading</button>
+
+<button id="focus">Focus Mode</button>
+
+<button id="read">Read Aloud</button>
+
+<button id="stop">Stop Reading</button>
+
+<button id="summary">AI Summary</button>
+
+<div class="footer">
+Smart Reading Assistant
+</div>
+
+</div>
+
+<script src="popup.js"></script>
+
+</body>
+</html>
