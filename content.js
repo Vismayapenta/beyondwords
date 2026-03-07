@@ -142,7 +142,7 @@ async function summarizeText(){
 
         text = text.substring(0,3500);
 
-        const apiKey = "AIzaSyBjcDe3FuAXFbHckQ4Jq2m3Ng_95REaZ4k";
+        const apiKey = "";
 
         const response = await fetch(
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key="+apiKey,
@@ -236,5 +236,6 @@ function bionicText(text){
         let mid = Math.ceil(word.length/2);
         return "<b>"+word.slice(0,mid)+"</b>"+word.slice(mid);
     }).join(" ");
+
 
 }
