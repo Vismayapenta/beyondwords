@@ -10,6 +10,7 @@ tabs[0].id,
 });
 
 }
+document.getElementById("dyslexic").onclick=()=>sendAction("dyslexic");
 
 document.getElementById("bionic").onclick=()=>sendAction("bionic");
 
