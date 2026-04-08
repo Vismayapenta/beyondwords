@@ -1,113 +1,322 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <title>NeuroFlow Reader</title>
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 
-body{
-    margin:0;
-    padding:15px;
-    width:250px;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg,#5f2c82,#49a09d);
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 300px;
+  font-family: 'DM Sans', sans-serif;
+  background: #0f0f13;
+  padding: 0;
+  overflow: hidden;
 }
 
-.container{
-    background:white;
-    border-radius:12px;
-    padding:18px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+/* ── Header ── */
+.header {
+  padding: 18px 18px 14px;
+  background: #0f0f13;
+  border-bottom: 1px solid #1e1e28;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-h3{
-    text-align:center;
-    margin:0 0 15px 0;
-    font-size:20px;
-    color:#2c3e50;
-    font-weight:600;
+.logo-mark {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7c5cbf, #49a09d);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
 }
 
-button{
-    width:100%;
-    padding:10px;
-    margin:7px 0;
-    border:none;
-    border-radius:8px;
-    font-size:14px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all 0.25s ease;
+.logo-mark svg { width: 18px; height: 18px; }
+
+.brand-text h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f0f0f5;
+  letter-spacing: -0.2px;
 }
 
-/* Button Colors */
-
-#bionic{
-    background:#27ae60;
-    color:white;
+.brand-text p {
+  font-size: 10px;
+  color: #555568;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+  margin-top: 1px;
 }
 
-#focus{
-    background:#f39c12;
-    color:white;
+/* ── Body ── */
+.body {
+  padding: 14px 14px 10px;
+  background: #0f0f13;
 }
 
-#read{
-    background:#2980b9;
-    color:white;
+/* ── Section label ── */
+.section-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3a3a52;
+  margin-bottom: 8px;
+  margin-top: 14px;
+}
+.section-label:first-child { margin-top: 0; }
+
+/* ── 3-col mode grid ── */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
 }
 
-#stop{
-    background:#e74c3c;
-    color:white;
+.mode-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 6px 10px;
+  background: #16161f;
+  border: 1px solid #1e1e2e;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  text-decoration: none;
 }
 
-#summary{
-    background:#8e44ad;
-    color:white;
+.mode-btn:hover {
+  background: #1c1c2a;
+  border-color: #2e2e44;
 }
 
-/* Hover Effect */
+.mode-btn:active { transform: scale(0.96); }
 
-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-    opacity:0.9;
+.mode-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
 }
 
-.footer{
-    text-align:center;
-    font-size:11px;
-    color:#7f8c8d;
-    margin-top:10px;
+.mode-icon svg { width: 15px; height: 15px; }
+
+.mode-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: #7070a0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* icon tints */
+.ic-purple { background: rgba(124,92,191,0.18); }
+.ic-teal   { background: rgba(73,160,157,0.18); }
+.ic-amber  { background: rgba(230,160,50,0.18); }
+
+/* ── 2-col speech grid ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.speech-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  letter-spacing: -0.1px;
+}
+
+.speech-btn:active { transform: scale(0.97); }
+.speech-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.btn-play {
+  background: linear-gradient(135deg, #7c5cbf, #49a09d);
+  color: #fff;
+}
+.btn-play:hover { opacity: 0.88; }
+
+.btn-stop {
+  background: #1e1218;
+  border-color: #3d1a24;
+  color: #d46a7e;
+}
+.btn-stop:hover { background: #261520; }
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: #1e1e28;
+  margin: 12px 0;
+}
+
+/* ── AI Summary full-width ── */
+.btn-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 14px;
+  background: #16161f;
+  border: 1px solid #2a2040;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #a07ed4;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: -0.1px;
+}
+.btn-summary:hover { background: #1c1c2e; }
+.btn-summary:active { transform: scale(0.98); }
+.btn-summary svg { width: 14px; height: 14px; }
+
+/* ── Footer ── */
+.footer {
+  padding: 8px 14px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9.5px;
+  color: #3a3a52;
+  font-family: 'DM Mono', monospace;
+}
+
+.status-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #49a09d;
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.footer-ver {
+  font-size: 9px;
+  color: #2a2a3e;
+  font-family: 'DM Mono', monospace;
 }
 
 </style>
-
 </head>
-
 <body>
 
-<div class="container">
-
-<h3>NeuroFlow</h3>
-
-<button id="bionic">Bionic Reading</button>
-
-<button id="focus">Focus Mode</button>
-
-<button id="read">Read Aloud</button>
-
-<button id="stop">Stop Reading</button>
-
-<button id="summary">AI Summary</button>
-
-<div class="footer">
-Smart Reading Assistant
+<!-- Header -->
+<div class="header">
+  <div class="logo-mark">
+    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="9" cy="9" r="6.5" stroke="white" stroke-width="1.5"/>
+      <path d="M6 9c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="9" cy="9" r="1.2" fill="white"/>
+    </svg>
+  </div>
+  <div class="brand-text">
+    <h3>NeuroFlow</h3>
+    <p>READING ASSISTANT</p>
+  </div>
 </div>
 
+<!-- Body -->
+<div class="body">
+
+  <div class="section-label">Reading modes</div>
+  <div class="grid-3">
+
+    <button class="mode-btn" id="dyslexic">
+      <div class="mode-icon ic-purple">
+        <svg viewBox="0 0 15 15" fill="none">
+          <path d="M2 4h4.5M2 7.5h8M2 11h6" stroke="#a07ed4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M10 7.5a2 2 0 1 1 0-3 2 2 0 0 1 0 3z" fill="#a07ed4" opacity=".5"/>
+        </svg>
+      </div>
+      <span class="mode-label">Dyslexic<br>font</span>
+    </button>
+
+    <button class="mode-btn" id="bionic">
+      <div class="mode-icon ic-teal">
+        <svg viewBox="0 0 15 15" fill="none">
+          <rect x="2" y="3" width="3" height="7" rx="1" fill="#49a09d" opacity=".5"/>
+          <rect x="6.5" y="1.5" width="3" height="9" rx="1" fill="#49a09d"/>
+          <rect x="11" y="4" width="2" height="6" rx="1" fill="#49a09d" opacity=".5"/>
+        </svg>
+      </div>
+      <span class="mode-label">Bionic<br>reading</span>
+    </button>
+
+    <button class="mode-btn" id="focus">
+      <div class="mode-icon ic-amber">
+        <svg viewBox="0 0 15 15" fill="none">
+          <circle cx="7.5" cy="7.5" r="4.5" stroke="#e6a032" stroke-width="1.5"/>
+          <circle cx="7.5" cy="7.5" r="1.8" fill="#e6a032"/>
+        </svg>
+      </div>
+      <span class="mode-label">Focus<br>mode</span>
+    </button>
+
+  </div>
+
+  <div class="section-label" style="margin-top:14px;">Text to speech</div>
+  <div class="grid-2">
+
+    <button class="speech-btn btn-play" id="read">
+      <svg viewBox="0 0 13 13" fill="none">
+        <path d="M3 2.5L10.5 6.5 3 10.5V2.5Z" fill="white"/>
+      </svg>
+      Read aloud
+    </button>
+
+    <button class="speech-btn btn-stop" id="stop">
+      <svg viewBox="0 0 13 13" fill="none">
+        <rect x="2.5" y="2.5" width="8" height="8" rx="1.5" fill="#d46a7e"/>
+      </svg>
+      Stop
+    </button>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <button class="btn-summary" id="summary">
+    <svg viewBox="0 0 14 14" fill="none">
+      <path d="M2 3.5h10M2 6.5h7M2 9.5h5" stroke="#a07ed4" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="11.5" cy="9.5" r="2" fill="rgba(160,126,212,0.2)" stroke="#a07ed4" stroke-width="1"/>
+      <path d="M11 9.5h1M11.5 9v1" stroke="#a07ed4" stroke-width="1" stroke-linecap="round"/>
+    </svg>
+    AI Summary
+  </button>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-status">
+    <div class="status-dot"></div>
+    ready
+  </div>
+  <span class="footer-ver">v1.0</span>
 </div>
 
 <script src="popup.js"></script>
